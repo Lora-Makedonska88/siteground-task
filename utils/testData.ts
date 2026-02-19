@@ -1,0 +1,11 @@
+export const testData = {
+    demoToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdF9uYW1lIjoiUSIsImxhc3RfbmFtZSI6IkEiLCJlbWFpbCI6InEuYUBzaXRlZ3JvdW5kLmNvbSIsImRvbWFpbiI6IiIsImxhbmciOiJlbiIsImV4cCI6MTk3MDEyNTA3NzJ9.MXA6ZIdl85XojUPStcz3JqyEct0bpKeOk_EEfOh7z7o',
+    accountName: 'test_account',
+
+    expectedDomains: [
+   'qa-automation-tools.com',
+   'store.qa-automation-tools.com',
+   'parked-qa-automation-tools.com',
+   'site-tools-demo.net',
+ ],
+};
