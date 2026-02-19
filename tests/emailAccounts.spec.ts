@@ -15,7 +15,6 @@ test.describe('Email Accounts - Add Email Account', () => {
   });
 
   test('TC#1 - Successfull Account creation', async () => {
-     // TODO:
   });
 });
  

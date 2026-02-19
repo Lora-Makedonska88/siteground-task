@@ -15,7 +15,6 @@ test.describe('Forwarders - TC#2 Validation', () => {
   });
 
   test('TC#2 - Required field error when creating forwarder without data', async () => {
-     // TODO:
   });
 });
  
