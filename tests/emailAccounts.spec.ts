@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
-import { DashboardPage } from '../pages/dashboard.page';
-import { EmailAccountsPage } from '../pages/emailAccounts.page';
-import { testData } from'../utils/testData';
+import { test, expect } from "@playwright/test";
+import { DashboardPage } from "../pages/dashboard.page";
+import { EmailAccountsPage } from "../pages/emailAccounts.page";
+import { testData } from "../utils/testData";
 
-test.describe('Email Accounts - Add Email Account', () => {
+test.describe("Email Accounts - Add Email Account", () => {
   let dashboardPage: DashboardPage;
   let emailAccountsPage: EmailAccountsPage;
 
@@ -14,7 +14,18 @@ test.describe('Email Accounts - Add Email Account', () => {
     await dashboardPage.navigateToEmailAccounts();
   });
 
-  test('TC#1 - Successfull Account creation', async () => {
+  test("TC#1 - Successfull Account creation", async () => {
+    await emailAccountsPage.openDomainDropdown();
+    await emailAccountsPage.validateDomainOptions(testData.expectedDomains);
+    await emailAccountsPage.chooseDomain(testData.selectedDomain);
+    await emailAccountsPage.fillAccountName(testData.accountName);
+    await emailAccountsPage.generatePassword();
+    await emailAccountsPage.clickCreate();
+
+    const selectedDomain = testData.selectedDomain;
+    await expect(emailAccountsPage.getSuccessMessage()).toContainText(
+      `${testData.accountName}@${selectedDomain}`,
+    );
+    await expect(emailAccountsPage.getAccountFromList(testData.accountName)).toBeVisible();
   });
 });
- 

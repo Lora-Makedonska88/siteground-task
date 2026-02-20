@@ -15,6 +15,11 @@ test.describe('Forwarders - TC#2 Validation', () => {
   });
 
   test('TC#2 - Required field error when creating forwarder without data', async () => {
+    await forwardersPage.openDomainDropdown();
+    await forwardersPage.validateDomainOptions(testData.expectedDomains);
+    await forwardersPage.chooseDomain(testData.selectedDomain);
+    await forwardersPage.clickCreate();
+    await forwardersPage.expectForwardNameRequiredError();
   });
 });
  
