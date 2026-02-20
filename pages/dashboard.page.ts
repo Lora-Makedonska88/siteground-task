@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect} from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class DashboardPage extends BasePage {
@@ -11,13 +11,15 @@ export class DashboardPage extends BasePage {
   }
 
   async openEmailMenu(): Promise<void> {
-    await this.page.getByRole('listitem').filter({ hasText: 'Email' }).click();
+    const emailMenu = this.page.getByRole('listitem').filter({ hasText: 'Email' });
+    await expect(emailMenu).toBeVisible();
+    await emailMenu.click();
   }
-
+  
   async navigateToEmailAccounts(): Promise<void> {
     await this.openDashboard();
     await this.openEmailMenu();
-    await this.page.locator('li[data-e2e="navigation-group-mail"]').click();
+    await this.page.getByRole('link', { name: 'Accounts' }).click();
   }
 
   async navigateToForwarders(): Promise<void> {
