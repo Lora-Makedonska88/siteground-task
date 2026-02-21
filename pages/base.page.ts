@@ -20,7 +20,7 @@ export class BasePage {
 
   async navigateWithToken(demoToken: string): Promise<void> {
     await this.page.goto(`/?demoToken=${demoToken}`, {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
   }
 
