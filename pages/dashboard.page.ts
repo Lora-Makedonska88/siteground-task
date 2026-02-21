@@ -7,7 +7,7 @@ export class DashboardPage extends BasePage {
   }
 
   async openDashboard(): Promise<void> {
-    await this.page.getByRole('listitem').filter({ hasText: 'Dashboard' }).click();
+    await this.page.locator('li[data-e2e="navigation-group-dashboard"]').click();
   }
 
   async openEmailMenu(): Promise<void> {
@@ -19,7 +19,9 @@ export class DashboardPage extends BasePage {
   async navigateToEmailAccounts(): Promise<void> {
     await this.openDashboard();
     await this.openEmailMenu();
-    await this.page.getByRole('link', { name: 'Accounts' }).click();
+    const accountsLink = this.page.getByRole('link', { name: 'Accounts' });
+    await expect(accountsLink).toBeVisible();
+    await accountsLink.click();
   }
 
   async navigateToForwarders(): Promise<void> {
